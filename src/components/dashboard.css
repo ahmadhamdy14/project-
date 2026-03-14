@@ -1,0 +1,52 @@
+.dashboard {
+  position: fixed;
+  top: 70px;
+  left: 0;
+  width: 220px;
+  height: calc(100vh - 70px);
+  background: rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  box-sizing: border-box;
+  overflow: hidden;
+  transition: width 0.3s ease;
+}
+
+.dashboard:hover {
+  width: 260px;
+}
+
+.dash-title {
+  color: green;
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+
+.dashboard button {
+  display: block;
+  width: 100%;
+  background: transparent;
+  border: none;
+  color: white;
+  padding: 12px 10px;
+  margin-bottom: 10px;
+  text-align: left;
+  font-size: 18px;
+  cursor: pointer;
+  border-radius: 8px;
+  opacity: 0;
+  transform: translateX(-20px);
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+
+.dashboard:hover button {
+  opacity: 1;
+  transform: translateX(0);
+  pointer-events: auto;
+}
+
+.dashboard button:hover {
+  background: rgba(0, 128, 0, 0.2);
+  color: #4caf50;
+}

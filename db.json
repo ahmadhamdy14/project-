@@ -20,6 +20,13 @@
       "email": "mahmoud@gmail.com",
       "password": "123456789",
       "phone": "0122415613"
+    },
+    {
+      "id": "50cd",
+      "name": "ahmed elattar",
+      "email": "ahmed.el3ttar14@gmail.com",
+      "password": "123456789",
+      "phone": "01157718746"
     }
   ]
 }

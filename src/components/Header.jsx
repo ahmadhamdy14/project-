@@ -2,10 +2,12 @@ import React, { useState, useEffect } from "react";
 import "./header.css";
 import Login from "../Login";
 import Register from "../Register";
+import { useNavigate } from "react-router-dom";
 export default function Header() {
   const [showLogin, setShowLogin] = useState(false);
   const [showRegister, setShowRegister] = useState(false);
   const [user, setUser] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const storedUser = localStorage.getItem("user");
@@ -27,13 +29,13 @@ export default function Header() {
   const handleLogout = () => {
     localStorage.removeItem("user");
     setUser(null);
-    window.location.pathname = "/"; 
+    navigate("/");
   };
   const goHome = () => {
-  window.location.pathname="/";
+    navigate("/");
 };
 const goGame = () => {
-  window.location.pathname="/game";
+  navigate("/game");
 }
 
   return (

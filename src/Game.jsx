@@ -1,10 +1,11 @@
 import React, { useEffect, useRef, useState } from "react";
-import Header from "./components/Header";
+
 export default function Game() {
   const canvasRef = useRef(null);
   const [isRunning, setIsRunning] = useState(false);
   const [score, setScore] = useState(0);
   const [gameOver, setGameOver] = useState(false);
+
   const box = 20;
   const canvasSize = 400;
 
@@ -17,9 +18,10 @@ export default function Game() {
     let direction = "RIGHT";
     let localScore = 0;
     let snake = [{ x: 5 * box, y: 5 * box }];
+
     let food = {
       x: Math.floor(Math.random() * 15 + 1) * box,
-      y: Math.floor(Math.random() * 15 + 1) * box,
+      y: Math.floor(Math.random() * 15 + 1) * box
     };
 
     const handleKeyDown = (e) => {
@@ -52,7 +54,7 @@ export default function Game() {
       if (snakeX === food.x && snakeY === food.y) {
         food = {
           x: Math.floor(Math.random() * 15 + 1) * box,
-          y: Math.floor(Math.random() * 15 + 1) * box,
+          y: Math.floor(Math.random() * 15 + 1) * box
         };
         localScore++;
         setScore(localScore);
@@ -93,32 +95,43 @@ export default function Game() {
   };
 
   return (
-    <div> <Header />
-    <div style={{ textAlign: "center",justifyContent:"centre", marginTop: "40px" }}>
-      <h2 style={{color:"green"}}>🐍 Snake Game</h2>
+    <div
+      style={{
+        height: "80vh",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center"
+      }}
+    >
+      <h2 style={{ color: "green" }}>🐍 Snake Game</h2>
 
       {!isRunning && !gameOver && (
         <button
-        onClick={() => setIsRunning(true)}
-        style={{
+          onClick={() => setIsRunning(true)}
+          style={{
             padding: "10px 20px",
             fontSize: "26px",
-            marginLeft: "400px",
             cursor: "pointer",
-            backgroundColor: "#4CAF50",
-            
-        }}
+            backgroundColor: "#4CAF50"
+          }}
         >
           ▶️ Start Game
         </button>
       )}
 
-      <canvas
-        ref={canvasRef}
-        width="400"
-        height="400"
-        style={{ border: "2px solid black" }}
+      {(isRunning || gameOver) && (
+        <canvas
+          ref={canvasRef}
+          width="400"
+          height="400"
+          style={{
+            border: "2px solid black",
+            display: "block",
+            margin: "20px auto"
+          }}
         ></canvas>
+      )}
 
       {isRunning && (
         <div style={{ marginTop: "20px", color: "green" }}>
@@ -127,37 +140,38 @@ export default function Game() {
       )}
 
       {gameOver && (
-          <div
+        <div
           style={{
-              marginTop: "10px",
-              padding: "15px",
-              border: "2px solid red",
-              borderRadius: "8px",
-              width: "300px",
-              marginLeft: "auto",
-              marginRight: "auto",
-              backgroundColor: "red",
-              color: "black",
-            }}
-            >
+            marginTop: "10px",
+            padding: "15px",
+            border: "2px solid red",
+            borderRadius: "8px",
+            width: "300px",
+            backgroundColor: "red",
+            color: "black",
+            textAlign: "center"
+          }}
+        >
           <h3>💀 Game Over</h3>
-          <p>Your Score: <strong>{score}</strong></p>
+          <p>
+            Your Score: <strong>{score}</strong>
+          </p>
+
           <button
             onClick={handleRestart}
             style={{
-                marginTop: "10px",
-                padding: "8px 16px",
-                fontSize: "14px",
-                cursor: "pointer",
-                backgroundColor: "black",
-                color: "white",
+              marginTop: "10px",
+              padding: "8px 16px",
+              fontSize: "14px",
+              cursor: "pointer",
+              backgroundColor: "black",
+              color: "white"
             }}
           >
             🔁 Restart
           </button>
         </div>
       )}
-      </div>
     </div>
   );
 }

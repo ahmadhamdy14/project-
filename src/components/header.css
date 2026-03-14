@@ -2,7 +2,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  background-image: url("D:\skills\project-\src\photos\1.jpg"); 
+  background-image: url("D:\skills\project-\src\photos\3.jpg"); 
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -19,6 +19,8 @@ nav {
   top: 0;
   left: 0;
   z-index: 999;
+    background: rgba(0, 0, 0, 0.1);
+
 }
 
 nav div {
